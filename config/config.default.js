@@ -40,18 +40,10 @@ module.exports = appInfo => {
   // session
   config.session = {
     key: 'EGG_SESS',
-    maxAge: 2 * 3600 * 1000, // 1 天
+    maxAge: 2 * 3600 * 1000, // 2 小时
     httpOnly: true,
     encrypt: true,
   };
-
-  // err
-  // config.onerror = {
-  //   all(err, ctx) {
-  //     ctx.status = 500;
-  //     ctx.body = err.message;
-  //   },
-  // };
 
   return config;
 };

@@ -24,8 +24,9 @@ class UsersService extends Service {
   async resetPwd(resetInfo) {
     const old_password = resetInfo.old_password,
       new_password = resetInfo.new_password,
-      id = this.ctx.session.user_id;
-    const result = await this.app.mysql.query('update users set hashed_password = ? where id = ? and hashed_password = ?', [ new_password, id, old_password ]);
+      id = this.ctx.session.user_id,
+      updated_at = this.app.mysql.literals.now;
+    const result = await this.app.mysql.query('update users set hashed_password = ? , updated_at = ? where id = ? and hashed_password = ?', [ new_password, updated_at, id, old_password ]);
     return result;
   }
 }

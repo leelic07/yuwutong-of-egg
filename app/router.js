@@ -12,4 +12,6 @@ module.exports = app => {
   router.get('/users/logout', controller.users.logout);
   // 修改密码接口
   router.post('/users/resetPwd', controller.users.resetPwd);
+  // 分页查询罪犯信息接口
+  router.get('/prisoners/page', controller.prisoners.page);
 };
