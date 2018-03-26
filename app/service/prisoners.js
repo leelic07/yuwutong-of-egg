@@ -15,7 +15,7 @@ class PrisonersService extends Service {
     });
     const prisonersSize = await this.app.mysql.select('prisoners', { where: prisonersInfo });
     return {
-      prisoners,
+      prisoners: this.ctx.helper.transformArr(prisoners),
       prisonersSize: prisonersSize.length,
     };
   }
